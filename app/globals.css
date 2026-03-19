@@ -1,0 +1,146 @@
+@import "tailwindcss" source(none);
+@source "../app/**/*.{ts,tsx,js,jsx,mdx}";
+@source "../components/**/*.{ts,tsx,js,jsx,mdx}";
+@source "../sections/**/*.{ts,tsx,js,jsx,mdx}";
+@source "../lib/**/*.{ts,tsx,js,jsx,mdx}";
+@source "../data/**/*.{ts,tsx,js,jsx,mdx}";
+
+:root {
+  --background: #080b10;
+  --surface: #0f141b;
+  --primary: #c8a97e;
+  --primary-hover: #b49366;
+  --secondary: #948571;
+  --accent: #5f7f86;
+  --text-primary: #f1e7d9;
+  --text-secondary: #afa495;
+  --border: #232b35;
+  --white: #ffffff;
+  --foreground: var(--text-primary);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-border: var(--border);
+  --color-white: var(--white);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-serif: var(--font-heading-serif);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground: var(--text-primary);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  background-image: radial-gradient(circle at top, rgba(200, 169, 126, 0.08), transparent 42%);
+  text-rendering: optimizeLegibility;
+}
+
+.section-label {
+  letter-spacing: 0.22em;
+}
+
+.soft-shadow {
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.34);
+}
+
+.elevated-panel {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
+    var(--surface);
+}
+
+.hairline-top {
+  position: relative;
+}
+
+.hairline-top::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200, 169, 126, 0.4), transparent);
+}
+
+::selection {
+  background: rgba(200, 169, 126, 0.3);
+  color: var(--text-primary);
+}
+
+.reveal-up {
+  animation: reveal-up 700ms ease-out both;
+}
+
+.glide-in-left {
+  animation: glide-in-left 820ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.glide-in-right {
+  animation: glide-in-right 820ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes why-choose-us-carousel-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.why-choose-us-carousel-track {
+  animation: why-choose-us-carousel-scroll 20s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .why-choose-us-carousel-track {
+    animation: none;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

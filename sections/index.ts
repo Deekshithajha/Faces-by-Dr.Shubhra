@@ -1,0 +1,11 @@
+export { ClinicLocationSection } from "@/sections/ClinicLocationSection";
+export { ConsultationForm } from "@/sections/ConsultationForm";
+export { CtaBanner } from "@/sections/CtaBanner";
+export { DoctorIntroductionSection } from "@/sections/DoctorIntroductionSection";
+export { HeroSection } from "@/sections/HeroSection";
+export { ResultsGallerySection } from "@/sections/ResultsGallerySection";
+export { ServicesGridSection } from "@/sections/ServicesGridSection";
+export { StarTreatmentsSection } from "@/sections/StarTreatmentsSection";
+export { TestimonialsSection } from "@/sections/TestimonialsSection";
+export { YouTubeTestimonialsSection } from "@/sections/YouTubeTestimonialsSection";
+export { WhyChooseUsSection } from "@/sections/WhyChooseUsSection";
