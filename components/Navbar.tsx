@@ -11,14 +11,16 @@ type NavLink = {
   children?: Array<{ href: string; label: string }>;
 };
 
+const clinicPhoneTel = "tel:+916281117454";
+
 const leftNavLinks: NavLink[] = [
   {
     href: "/about",
-    label: "Dr. Shubhra Goel",
+    label: "About Us",
   },
   {
     href: "/service",
-    label: "Our Services",
+    label: "What we do",
     children: [
       { href: "/service#normal-services-grid", label: "Our Treatment" },
       { href: "/service#plexer-pro-grid", label: "Plexer Pro" },
@@ -27,7 +29,7 @@ const leftNavLinks: NavLink[] = [
 ];
 
 const rightNavLinks: NavLink[] = [
-  { href: "/contact", label: "Contact" },
+  { href: clinicPhoneTel, label: "Contact" },
   { href: "/book", label: "Book" },
 ];
 
@@ -105,11 +107,17 @@ export function Navbar() {
           </div>
 
           <nav className="flex w-1/3 items-center justify-end gap-10 pr-12">
-            {rightNavLinks.map((link) => (
-              <Link key={link.href} href={link.href} className={navClassname(pathname, link.href)}>
-                {link.label}
-              </Link>
-            ))}
+            {rightNavLinks.map((link) =>
+              link.href.startsWith("tel:") ? (
+                <a key={link.href} href={link.href} className={navClassname(pathname, link.href)}>
+                  {link.label}
+                </a>
+              ) : (
+                <Link key={link.href} href={link.href} className={navClassname(pathname, link.href)}>
+                  {link.label}
+                </Link>
+              ),
+            )}
           </nav>
 
           <a
@@ -158,13 +166,23 @@ export function Navbar() {
               <div className="flex flex-col gap-3">
                 {mobileLinks.map((link) => (
                   <div key={link.href} className="flex flex-col gap-2">
-                    <Link
-                      href={link.href}
-                      className={navClassname(pathname, link.href, link.children)}
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
+                    {link.href.startsWith("tel:") ? (
+                      <a
+                        href={link.href}
+                        className={navClassname(pathname, link.href, link.children)}
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className={navClassname(pathname, link.href, link.children)}
+                        onClick={() => setMobileOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                     {link.children?.map((child) => (
                       <Link
                         key={child.href}
