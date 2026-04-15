@@ -17,7 +17,7 @@ export function ProcedureCard({ procedure }: ProcedureCardProps) {
         <p>Recovery: {procedure.recovery}</p>
       </div>
       <Link
-        href={`/procedures/${procedure.slug}`}
+        href={`/service/our-treatment/${procedure.slug}`}
         className="mt-8 inline-flex items-center gap-2 text-sm font-medium tracking-wide text-primary transition-all duration-300 hover:gap-3 hover:text-primary-hover"
       >
         View Treatment Details

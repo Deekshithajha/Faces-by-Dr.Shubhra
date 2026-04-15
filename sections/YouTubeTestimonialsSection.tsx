@@ -17,9 +17,9 @@ export function YouTubeTestimonialsSection() {
     <section className="py-20 md:py-24 lg:py-28">
       <Container>
         <SectionHeading
-          label="Video Testimonials"
+          label="What Our Clients Say"
           title="Real patient stories from our YouTube channel"
-          description="Watch first-hand experiences from patients who trusted Dr. Shubhra Goel and Faces for their treatment journey."
+          description="Watch first-hand experiences from patients who trusted Dr. Shubhra Goel and FACES for their treatment journey."
           align="center"
         />
 
@@ -32,7 +32,7 @@ export function YouTubeTestimonialsSection() {
                 target="_blank"
                 rel="noreferrer"
                 className={styles.card}
-                aria-label={`Watch testimonial: ${video.title}`}
+                aria-label={`Watch what our clients say: ${video.title}`}
               >
                 <div className={styles.frame}>
                   <Image

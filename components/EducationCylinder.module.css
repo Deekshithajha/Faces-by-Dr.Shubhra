@@ -1,10 +1,19 @@
 .scene {
   position: relative;
-  height: 28rem;
   width: 100%;
+  /* Explicit height (not only min-height) so the in-flow .cylinder { height: 100% } resolves reliably */
+  height: clamp(22rem, 55vh, 42rem);
   overflow: hidden;
   perspective: 1400px;
-  mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+  /* Soft horizontal fade + light vertical vignette so the stage blends into the section */
+  mask-image:
+    linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%),
+    linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-composite: source-in;
 }
 
 .cylinder {
@@ -87,7 +96,7 @@
 
 @media (max-width: 768px) {
   .scene {
-    height: 24rem;
+    height: clamp(20rem, 48vh, 32rem);
   }
 
   .panel {
@@ -95,5 +104,13 @@
       translate(-50%, -50%)
       rotateY(calc((360deg / var(--total-panels)) * var(--panel-index)))
       translateZ(17rem);
+  }
+}
+
+/* Browsers without compositing: keep the horizontal edge fade only */
+@supports not (mask-composite: intersect) {
+  .scene {
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
   }
 }

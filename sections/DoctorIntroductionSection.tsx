@@ -12,7 +12,7 @@ interface DoctorIntroductionSectionProps {
 export function DoctorIntroductionSection({
   doctor,
   imageSrc = "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/dr-image/Image%2017-03-26%20at%2012.45%20PM.png",
-  imageAlt = "Faces story portrait",
+  imageAlt = "FACES story portrait",
 }: DoctorIntroductionSectionProps) {
   return (
     <section className="py-20 md:py-24 lg:py-28">
@@ -31,7 +31,7 @@ export function DoctorIntroductionSection({
           </div>
           <div className="reveal-up [animation-delay:100ms]">
             <SectionHeading
-              label="Faces Story"
+              label="FACES Story"
               title="Where clinical depth meets timeless refinement"
               description={doctor.bio}
             />

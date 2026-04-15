@@ -9,6 +9,8 @@ interface HeroSectionProps {
   secondaryCta?: { href: string; label: string };
   imageSrc?: string;
   imageAlt?: string;
+  /** Optional pill over the hero image (e.g. treatment section label). */
+  imageOverlayLabel?: string;
   imageFit?: "cover" | "contain";
   imageStyle?: "panel" | "seamless";
   imagePosition?: "right" | "left";
@@ -22,6 +24,7 @@ export function HeroSection({
   secondaryCta,
   imageSrc = "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/dr-image/Screenshot%202025-07-21%20155603.png",
   imageAlt = "Dr. Shubhra Goel – Oculoplasty Surgeon",
+  imageOverlayLabel,
   imageFit = "cover",
   imageStyle = "panel",
   imagePosition = "right",
@@ -76,6 +79,11 @@ export function HeroSection({
             ) : null}
             {!isContainedImage && isSeamlessImage ? (
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_46%,rgba(8,11,16,0.22)_100%)]" />
+            ) : null}
+            {imageOverlayLabel ? (
+              <span className="absolute left-4 top-4 z-[1] max-w-[min(100%,18rem)] rounded-full border border-border bg-background/90 px-3 py-1 text-[10px] uppercase leading-tight tracking-[0.12em] text-secondary">
+                {imageOverlayLabel}
+              </span>
             ) : null}
           </div>
         </div>

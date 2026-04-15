@@ -153,9 +153,9 @@ using (is_active = true);
 
 insert into public.treatments (slug, title, short_description, category, display_order, is_active)
 values
-  ('deep-plane-facelift', 'Facial Surgery', 'Refined facial procedures designed to preserve identity while restoring youthful structure and harmony.', 'facial', 1, true),
-  ('abdominoplasty', 'Body Contouring', 'Advanced contouring techniques to shape proportion, improve silhouette, and support long-term confidence.', 'body', 2, true),
-  ('breast-augmentation', 'Breast Surgery', 'Comprehensive breast procedures focused on proportion, comfort, and aesthetically harmonious outcomes.', 'breast', 3, true)
+  ('dark-circles', 'Dark Circles', 'Cause-based pathways for under-eye darkness and tired appearance.', 'facial', 1, true),
+  ('acne', 'Acne', 'Structured care for active acne and post-inflammatory skin changes.', 'facial', 2, true),
+  ('puffy-baggy-eyes', 'Puffy / Baggy Eyes', 'Plans for under-eye bags and heavy or tired eyelids.', 'facial', 3, true)
 on conflict (slug) do update set
   title = excluded.title,
   short_description = excluded.short_description,
@@ -166,17 +166,17 @@ on conflict (slug) do update set
 
 insert into public.testimonials (patient_name, treatment_type, testimonial, rating, display_order, is_featured)
 values
-  ('Anika R.', 'Deep Plane Facelift', 'The result is subtle but transformative. I still look like myself, only fresher and more confident.', 5, 1, true),
-  ('Meera S.', 'Rhinoplasty', 'The treatment plan respected my goals. My profile feels softer and natural, and my breathing improved too.', 5, 2, true),
-  ('Priya K.', 'Breast Lift', 'From consultation to follow-up, the care was warm and meticulous. The proportions feel elegant and balanced.', 5, 3, true)
+  ('Anika R.', 'Anti-Ageing Skin Care', 'The results were subtle but transformative. My skin looks healthier, brighter, and still completely natural.', 5, 1, true),
+  ('Meera S.', 'Acne', 'Dr. Goel understood my concerns in detail. My breakouts reduced and skin clarity improved significantly.', 5, 2, true),
+  ('Priya K.', 'Dark Circles', 'From consultation to follow-up, the care was warm and meticulous. I look fresh and well-rested without looking overdone.', 5, 3, true)
 on conflict do nothing;
 
 insert into public.before_after_cases
   (title, category, description, before_image_url, after_image_url, recovery_note, display_order, is_published)
 values
-  ('Facial Rejuvenation', 'facial', 'Improved jawline definition with softened lower-face heaviness.', null, null, '6 months post-op', 1, true),
-  ('Profile Refinement', 'facial', 'Balanced nasal bridge and tip projection for better facial harmony.', null, null, '9 months post-op', 2, true),
-  ('Abdominal Contour', 'body', 'Flatter abdominal profile and improved core silhouette.', null, null, '4 months post-op', 3, true)
+  ('Dark Circles', 'facial', 'Softer under-eye shadowing with a more rested, natural appearance.', null, null, 'Discussed in consultation', 1, true),
+  ('Puffy / Baggy Eyes', 'facial', 'Reduced under-eye fullness with improved lid contour and balance.', null, null, 'Discussed in consultation', 2, true),
+  ('Acne', 'facial', 'Clearer surface with calmer breakouts and improved overall skin clarity.', null, null, 'Discussed in consultation', 3, true)
 on conflict do nothing;
 
 insert into public.site_settings (section_key, title, subtitle, description, content_json, is_active)
@@ -186,7 +186,7 @@ values
     'Luxury medical aesthetics with an editorial calm',
     'Private Aesthetic Medicine',
     'AUREA blends advanced clinical care with a warm, premium experience designed around subtle, natural-looking outcomes and patient trust.',
-    '{"primary_cta":{"label":"Book Consultation","href":"/contact"},"secondary_cta":{"label":"Explore Treatments","href":"/surgeries"}}'::jsonb,
+    '{"primary_cta":{"label":"Book Consultation","href":"/contact"},"secondary_cta":{"label":"Explore Treatments","href":"/service#explore-all-treatments-grid"}}'::jsonb,
     true
   ),
   (

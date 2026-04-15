@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
+import { UNIQUE_CLINICA_FAI_TREATMENTS_HEADING } from "@/data/treatmentSections";
 
 export function Footer() {
   return (
@@ -7,12 +8,12 @@ export function Footer() {
       <Container className="grid gap-10 py-16 text-sm text-text-secondary md:grid-cols-4">
         <div className="space-y-3 md:col-span-2">
           <div>
-            <p className="font-serif text-2xl tracking-[0.15em] text-primary">FACES</p>
+            <p className="font-serif text-2xl uppercase tracking-[0.15em] text-primary">FACES</p>
             <p className="text-xs tracking-[0.2em] text-secondary">Oculoplasty Surgeon</p>
           </div>
           <p className="max-w-md leading-7">
-            Dr. Shubhra Goel – Oculoplasty Surgeon. Advanced dermatology and premium eye-area
-            care with a patient-first experience focused on safe, natural-looking results.
+            Dr. Shubhra Goel – Oculoplasty Surgeon. Evidence-led skin and periocular care with a
+            patient-first experience focused on safe, natural-looking results.
           </p>
         </div>
         <div className="space-y-3">
@@ -24,11 +25,11 @@ export function Footer() {
             <Link href="/service" className="transition-colors hover:text-primary">
               Our Services
             </Link>
-            <Link href="/service#normal-services-grid" className="transition-colors hover:text-primary">
-              Normal Services
+            <Link href="/service#explore-all-treatments-grid" className="transition-colors hover:text-primary">
+              Explore All Our Treatments
             </Link>
-            <Link href="/service#plexer-pro-grid" className="transition-colors hover:text-primary">
-              Plexer Pro
+            <Link href="/service#unique-clinica-fai-treatments-grid" className="transition-colors hover:text-primary">
+              {UNIQUE_CLINICA_FAI_TREATMENTS_HEADING}
             </Link>
             <Link href="/surgeries" className="transition-colors hover:text-primary">
               Treatments
@@ -61,7 +62,7 @@ export function Footer() {
       </Container>
       <Container className="border-t border-border/70 py-5 text-xs tracking-wide text-text-secondary/80">
         <p>
-          Dr. Shubhra Goel – Oculoplasty Surgeon · Faces — premium dermatology and eye-area care.
+          Dr. Shubhra Goel – Oculoplasty Surgeon · FACES — premium periocular and skin-focused care.
         </p>
       </Container>
     </footer>

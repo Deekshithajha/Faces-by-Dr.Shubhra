@@ -73,7 +73,7 @@ const experience: LeadershipCategory[] = [
   {
     title: "Leadership",
     items: [
-      { role: "Co-founder and CEO", organization: "Faces" },
+      { role: "Co-founder and CEO", organization: "FACES" },
       { role: "Head of Oculofacial Aesthetics", organization: "CFS Hyderabad" },
       { role: "Head of Aesthetic Clinic", organization: "Sankara Nethralaya" },
     ],
@@ -164,8 +164,8 @@ export default function CredentialsPage() {
         </Container>
       </section>
 
-      <section className="py-20 md:py-24">
-        <Container>
+      <section className="relative overflow-x-hidden bg-gradient-to-b from-background via-surface/35 to-background py-24 md:py-28">
+        <Container className="relative z-10">
           <p className="section-label text-xs uppercase text-secondary">Educational Excellence</p>
           <h2 className="mt-3 font-serif text-4xl text-primary md:text-5xl">
             A journey of continuous learning
@@ -174,10 +174,10 @@ export default function CredentialsPage() {
             Each academic milestone is displayed with its institute visual in a continuous rotating 3D
             hollow-cylinder showcase.
           </p>
-          <div className="mt-10">
-            <EducationCylinder items={education} />
-          </div>
         </Container>
+        <div className="relative left-1/2 z-0 mt-10 w-[100vw] max-w-[100vw] -translate-x-1/2 md:mt-14">
+          <EducationCylinder items={education} />
+        </div>
       </section>
 
       <section className="py-20 md:py-24">

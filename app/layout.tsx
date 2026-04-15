@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Footer, Navbar } from "@/components";
+import { Footer, Navbar, WhatsAppFloatingButton } from "@/components";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,9 +19,9 @@ const cormorant = Cormorant_Garamond({
   weight: ["400", "500", "600", "700"],
 });
 
-const siteTitle = "Faces | Dr. Shubhra Goel – Oculoplasty Surgeon";
+const siteTitle = "FACES | Dr. Shubhra Goel – Oculoplasty Surgeon";
 const siteDescription =
-  "Dr. Shubhra Goel – Oculoplasty Surgeon. Advanced dermatology and premium eye-area care in Hyderabad.";
+  "Dr. Shubhra Goel – Oculoplasty Surgeon. Evidence-led skin and periocular care at FACES, Hyderabad.";
 
 export const metadata: Metadata = {
   title: siteTitle,
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: siteTitle,
     description: siteDescription,
-    siteName: "Faces",
+    siteName: "FACES",
     locale: "en_IN",
     type: "website",
   },
@@ -53,6 +53,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <WhatsAppFloatingButton />
       </body>
     </html>
   );

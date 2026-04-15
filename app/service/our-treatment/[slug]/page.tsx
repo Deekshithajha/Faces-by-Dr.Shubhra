@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 
-import { legacyTreatmentCatalog } from "@/data/legacyTreatmentCatalog";
-import { legacyTreatments } from "@/data/legacyTreatments";
+import { TreatmentEducationContent } from "@/components/TreatmentEducationContent";
+import {
+  EXPLORE_ALL_TREATMENTS_HEADING,
+  UNIQUE_CLINICA_FAI_TREATMENTS_HEADING,
+} from "@/data/treatmentSections";
+import { getTreatmentEducation } from "@/data/treatmentEducationContent";
+import { publishedLegacyTreatments, publishedTreatmentCatalog } from "@/data/publishedTreatments";
 import { CtaBanner, HeroSection } from "@/sections";
 
 interface LegacyTreatmentPageProps {
@@ -11,36 +15,46 @@ interface LegacyTreatmentPageProps {
 }
 
 export function generateStaticParams() {
-  return legacyTreatments.map((treatment) => ({ slug: treatment.slug }));
+  return publishedLegacyTreatments.map((treatment) => ({ slug: treatment.slug }));
 }
 
 export async function generateMetadata({
   params,
 }: LegacyTreatmentPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const treatment = legacyTreatments.find((item) => item.slug === slug);
-  const treatmentCatalog = legacyTreatmentCatalog.find((item) => item.slug === slug);
+  const treatment = publishedLegacyTreatments.find((item) => item.slug === slug);
+  const treatmentCatalog = publishedTreatmentCatalog.find((item) => item.slug === slug);
 
   if (!treatment || !treatmentCatalog) {
-    return { title: "Treatment Not Found | Faces" };
+    return { title: "Treatment Not Found | FACES" };
   }
 
   return {
-    title: `${treatmentCatalog.name} | Faces`,
+    title: `${treatmentCatalog.name} | FACES`,
     description: treatmentCatalog.description,
   };
 }
 
-export default async function LegacyTreatmentPage({
-  params,
-}: LegacyTreatmentPageProps) {
+export default async function LegacyTreatmentPage({ params }: LegacyTreatmentPageProps) {
   const { slug } = await params;
-  const treatment = legacyTreatments.find((item) => item.slug === slug);
-  const treatmentCatalog = legacyTreatmentCatalog.find((item) => item.slug === slug);
+  const treatment = publishedLegacyTreatments.find((item) => item.slug === slug);
+  const treatmentCatalog = publishedTreatmentCatalog.find((item) => item.slug === slug);
 
   if (!treatment || !treatmentCatalog) {
     notFound();
   }
+
+  const sectionBadge =
+    treatmentCatalog.catalogSection === "unique"
+      ? UNIQUE_CLINICA_FAI_TREATMENTS_HEADING
+      : EXPLORE_ALL_TREATMENTS_HEADING;
+
+  const education = getTreatmentEducation({
+    slug: treatment.slug,
+    name: treatment.name,
+    overview: treatment.overview,
+    catalogSection: treatmentCatalog.catalogSection,
+  });
 
   return (
     <>
@@ -48,43 +62,12 @@ export default async function LegacyTreatmentPage({
         title={treatmentCatalog.name}
         subtitle={treatmentCatalog.description}
         primaryCta={{ href: "/contact", label: "Book Consultation" }}
+        imageSrc={treatmentCatalog.imageUrl}
+        imageAlt={treatmentCatalog.name}
+        imageOverlayLabel={sectionBadge}
       />
 
-      <section className="mx-auto w-full max-w-5xl px-6 py-20">
-        <div className="elevated-panel rounded-3xl border border-border p-8 md:p-12">
-          <div className="relative mb-8 h-72 overflow-hidden rounded-2xl border border-border">
-            <Image
-              src={treatmentCatalog.imageUrl}
-              alt={treatmentCatalog.name}
-              fill
-              className="object-cover"
-              sizes="(min-width: 1024px) 70vw, 95vw"
-            />
-            <div className="absolute inset-0 bg-linear-to-t from-black/35 to-transparent" />
-            <span className="absolute left-4 top-4 rounded-full border border-border bg-background/90 px-3 py-1 text-[10px] uppercase tracking-[0.12em] text-secondary">
-              {treatmentCatalog.category}
-            </span>
-          </div>
-
-          <h2 className="font-serif text-4xl text-primary">Treatment Overview</h2>
-          <p className="mt-5 leading-8 text-text-secondary">{treatmentCatalog.description}</p>
-
-          <div className="mt-10 grid gap-5 rounded-2xl border border-border bg-background p-6 md:grid-cols-3">
-            <div>
-              <p className="section-label text-xs uppercase text-secondary">Typical Duration</p>
-              <p className="mt-2 text-sm text-text-primary">{treatmentCatalog.duration}</p>
-            </div>
-            <div>
-              <p className="section-label text-xs uppercase text-secondary">Anesthesia</p>
-              <p className="mt-2 text-sm text-text-primary">{treatment.anesthesia}</p>
-            </div>
-            <div>
-              <p className="section-label text-xs uppercase text-secondary">Recovery Window</p>
-              <p className="mt-2 text-sm text-text-primary">{treatmentCatalog.recovery}</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TreatmentEducationContent data={education} />
 
       <CtaBanner
         title="Speak with our care team about next steps"

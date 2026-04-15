@@ -27,17 +27,6 @@ export function ResultsGallerySection({ items, showViewAll = false }: ResultsGal
             </Link>
           ) : null}
         </div>
-        <div className="mb-8 flex flex-wrap gap-3">
-          {["Facial", "Body", "Periocular"].map((filter) => (
-            <button
-              key={filter}
-              type="button"
-              className="h-10 rounded-lg border border-border bg-background px-4 text-xs uppercase tracking-[0.18em] text-secondary transition-all duration-300 hover:-translate-y-0.5 hover:border-accent hover:text-primary"
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
         <div className="grid gap-6 md:grid-cols-3">
           {items.map((item) => (
             <Card key={item.id} className="overflow-hidden p-0">

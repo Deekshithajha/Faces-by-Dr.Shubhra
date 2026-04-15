@@ -1,40 +1,32 @@
 import {
   beforeAfterResults as fallbackResults,
-  procedureCategories,
   testimonials as fallbackTestimonials,
 } from "@/data";
+import { publishedTreatmentCatalog, publishedTreatmentSlugs } from "@/data/publishedTreatments";
 import { getSupabaseServerClient } from "@/lib/supabaseServer";
 import type { BeforeAfterResult, Testimonial, Treatment } from "@/types";
 
-const fallbackTreatments: Treatment[] = [
-  {
-    id: "facial-default",
-    slug: "deep-plane-facelift",
-    title: "Facial Dermatology",
-    shortDescription: procedureCategories[0].description,
-    category: "facial",
-    imageUrl: null,
-    displayOrder: 1,
-  },
-  {
-    id: "body-default",
-    slug: "abdominoplasty",
-    title: "Body and Hair Care",
-    shortDescription: procedureCategories[1].description,
-    category: "body",
-    imageUrl: null,
-    displayOrder: 2,
-  },
-  {
-    id: "breast-default",
-    slug: "breast-augmentation",
-    title: "Oculoplasty & periocular aesthetics",
-    shortDescription: procedureCategories[2].description,
-    category: "breast",
-    imageUrl: null,
-    displayOrder: 3,
-  },
-];
+const publishedSlugSet = new Set(publishedTreatmentSlugs);
+
+function clipDescription(text: string, maxLen = 180): string {
+  const t = text.trim();
+  if (t.length <= maxLen) return t;
+  return `${t.slice(0, maxLen - 1)}…`;
+}
+
+const explorePreview = publishedTreatmentCatalog
+  .filter((item) => item.catalogSection === "explore")
+  .slice(0, 3);
+
+const fallbackTreatments: Treatment[] = explorePreview.map((item, index) => ({
+  id: `explore-home-${item.slug}`,
+  slug: item.slug,
+  title: item.name,
+  shortDescription: clipDescription(item.description),
+  category: "facial",
+  imageUrl: item.imageUrl,
+  displayOrder: index + 1,
+}));
 
 type DbTreatment = {
   id: string;
@@ -82,15 +74,23 @@ export async function getTreatments(): Promise<Treatment[]> {
     return fallbackTreatments;
   }
 
-  return (data as DbTreatment[]).map((item) => ({
-    id: item.id,
-    slug: item.slug,
-    title: item.title,
-    shortDescription: item.short_description,
-    category: (item.category as Treatment["category"]) ?? "facial",
-    imageUrl: item.image_url,
-    displayOrder: item.display_order,
-  }));
+  const mapped = (data as DbTreatment[])
+    .filter((item) => publishedSlugSet.has(item.slug))
+    .map((item) => ({
+      id: item.id,
+      slug: item.slug,
+      title: item.title,
+      shortDescription: item.short_description,
+      category: (item.category as Treatment["category"]) ?? "facial",
+      imageUrl: item.image_url,
+      displayOrder: item.display_order,
+    }));
+
+  if (mapped.length === 0) {
+    return fallbackTreatments;
+  }
+
+  return mapped;
 }
 
 export async function getTestimonials(): Promise<Testimonial[]> {

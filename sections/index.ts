@@ -7,5 +7,6 @@ export { ResultsGallerySection } from "@/sections/ResultsGallerySection";
 export { ServicesGridSection } from "@/sections/ServicesGridSection";
 export { StarTreatmentsSection } from "@/sections/StarTreatmentsSection";
 export { TestimonialsSection } from "@/sections/TestimonialsSection";
+export { TreatmentsCatalogSections } from "@/sections/TreatmentsCatalogSections";
 export { YouTubeTestimonialsSection } from "@/sections/YouTubeTestimonialsSection";
 export { WhyChooseUsSection } from "@/sections/WhyChooseUsSection";

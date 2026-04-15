@@ -1,17 +1,39 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import {
+  type FormEvent,
+  type MouseEvent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Container } from "@/components/Container";
 import { FormInput, formControlClassName, textAreaControlClassName } from "@/components/FormInput";
 import { PrimaryButton } from "@/components/Button";
 import { SectionHeading } from "@/components/SectionHeading";
+import { publishedTreatmentCatalog } from "@/data/publishedTreatments";
 import { supabase } from "@/lib/supabaseClient";
+
+const defaultTreatmentName = publishedTreatmentCatalog[0]?.name ?? "";
+
+function findTreatmentByExactName(raw: string) {
+  const q = raw.trim().toLowerCase();
+  return publishedTreatmentCatalog.find((item) => item.name.toLowerCase() === q) ?? null;
+}
+
+function filterTreatmentsBySubstring(query: string) {
+  const q = query.trim().toLowerCase();
+  if (!q) {
+    return publishedTreatmentCatalog;
+  }
+  return publishedTreatmentCatalog.filter((item) => item.name.toLowerCase().includes(q));
+}
 
 type ConsultationFormValues = {
   fullName: string;
   phoneNumber: string;
   email: string;
-  areaOfInterest: string;
   message: string;
 };
 
@@ -19,15 +41,69 @@ const initialValues: ConsultationFormValues = {
   fullName: "",
   phoneNumber: "",
   email: "",
-  areaOfInterest: "Facial Dermatology",
   message: "",
 };
 
 export function ConsultationForm() {
   const [formValues, setFormValues] = useState<ConsultationFormValues>(initialValues);
+  const [treatmentInput, setTreatmentInput] = useState(defaultTreatmentName);
+  const [treatmentPanelOpen, setTreatmentPanelOpen] = useState(false);
+  const lastCommittedTreatment = useRef(defaultTreatmentName);
+  const blurDismissTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionError, setSubmissionError] = useState<string | null>(null);
   const [submissionSuccess, setSubmissionSuccess] = useState<string | null>(null);
+
+  const filteredTreatments = useMemo(() => filterTreatmentsBySubstring(treatmentInput), [treatmentInput]);
+
+  useEffect(() => {
+    return () => {
+      if (blurDismissTimer.current !== null) {
+        clearTimeout(blurDismissTimer.current);
+      }
+    };
+  }, []);
+
+  const clearBlurDismissTimer = () => {
+    if (blurDismissTimer.current !== null) {
+      clearTimeout(blurDismissTimer.current);
+      blurDismissTimer.current = null;
+    }
+  };
+
+  const commitTreatmentName = (name: string) => {
+    lastCommittedTreatment.current = name;
+    setTreatmentInput(name);
+  };
+
+  const handleTreatmentInputChange = (value: string) => {
+    setTreatmentInput(value);
+    setTreatmentPanelOpen(true);
+  };
+
+  const handleTreatmentInputBlur = () => {
+    blurDismissTimer.current = setTimeout(() => {
+      setTreatmentPanelOpen(false);
+      const exact = findTreatmentByExactName(treatmentInput);
+      if (exact) {
+        commitTreatmentName(exact.name);
+      } else {
+        setTreatmentInput(lastCommittedTreatment.current);
+      }
+      blurDismissTimer.current = null;
+    }, 150);
+  };
+
+  const handleTreatmentOptionMouseDown = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  };
+
+  const handleSelectTreatment = (name: string) => {
+    clearBlurDismissTimer();
+    commitTreatmentName(name);
+    setTreatmentPanelOpen(false);
+  };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -39,12 +115,20 @@ export function ConsultationForm() {
       return;
     }
 
+    const areaMatch = findTreatmentByExactName(treatmentInput);
+    if (!areaMatch) {
+      setSubmissionError(
+        "Please choose an area of interest from the suggestions, or type letters to search and then select a treatment.",
+      );
+      return;
+    }
+
     setIsSubmitting(true);
     const { error } = await supabase.from("consultations").insert({
       full_name: formValues.fullName,
       phone_number: formValues.phoneNumber,
       email: formValues.email,
-      area_of_interest: formValues.areaOfInterest,
+      area_of_interest: areaMatch.name,
       message: formValues.message,
     });
     setIsSubmitting(false);
@@ -55,6 +139,7 @@ export function ConsultationForm() {
     }
 
     setFormValues(initialValues);
+    commitTreatmentName(defaultTreatmentName);
     setSubmissionSuccess("Thank you. Our care team will contact you shortly.");
   };
 
@@ -101,17 +186,54 @@ export function ConsultationForm() {
               />
             </FormInput>
             <FormInput label="Area of Interest">
-              <select
-                className={formControlClassName}
-                value={formValues.areaOfInterest}
-                onChange={(event) =>
-                  setFormValues((current) => ({ ...current, areaOfInterest: event.target.value }))
-                }
-              >
-                <option>Facial Dermatology</option>
-                <option>Body and Hair Care</option>
-                <option>Oculoplasty & periocular aesthetics</option>
-              </select>
+              <div className="relative">
+                <input
+                  type="text"
+                  role="combobox"
+                  aria-autocomplete="list"
+                  aria-expanded={treatmentPanelOpen}
+                  aria-controls="consultation-treatment-suggestions"
+                  className={formControlClassName}
+                  placeholder="Type to search (e.g. abs, acne, peel)…"
+                  autoComplete="off"
+                  value={treatmentInput}
+                  onChange={(event) => handleTreatmentInputChange(event.target.value)}
+                  onFocus={(event) => {
+                    clearBlurDismissTimer();
+                    event.target.select();
+                    setTreatmentPanelOpen(true);
+                  }}
+                  onBlur={handleTreatmentInputBlur}
+                />
+                {treatmentPanelOpen ? (
+                  <ul
+                    id="consultation-treatment-suggestions"
+                    role="listbox"
+                    className="absolute z-50 mt-1 max-h-60 w-full overflow-auto rounded-xl border border-border bg-background py-1 shadow-lg"
+                  >
+                    {filteredTreatments.length === 0 ? (
+                      <li className="px-4 py-3 text-sm text-text-secondary">No treatments match that search.</li>
+                    ) : (
+                      filteredTreatments.map((item) => (
+                        <li key={item.slug} role="presentation">
+                          <button
+                            type="button"
+                            role="option"
+                            aria-selected={
+                              findTreatmentByExactName(treatmentInput)?.slug === item.slug
+                            }
+                            className="flex w-full px-4 py-2.5 text-left text-sm text-text-primary hover:bg-border/40 focus:bg-border/40 focus:outline-none"
+                            onMouseDown={handleTreatmentOptionMouseDown}
+                            onClick={() => handleSelectTreatment(item.name)}
+                          >
+                            {item.name}
+                          </button>
+                        </li>
+                      ))
+                    )}
+                  </ul>
+                ) : null}
+              </div>
             </FormInput>
             <FormInput label="Message" className="md:col-span-2">
               <textarea

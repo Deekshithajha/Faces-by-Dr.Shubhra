@@ -1,0 +1,43 @@
+/** Short labels for treatment cards (shown uppercase in UI). */
+export const TREATMENT_CARD_CATEGORY_BY_SLUG: Record<string, string> = {
+  "absent-scanty-brows-lashes": "Eye & brow enhancement",
+  acne: "Medical dermatology",
+  "anti-ageing-skin-care": "Skin rejuvenation",
+  "anti-cellulite-treatment": "Body contouring",
+  "cheek-hollowness-smile-folds": "Facial volume & lines",
+  "chemical-peels": "Skin resurfacing",
+  "daily-skin-care-program": "Skin wellness",
+  "dark-circles": "Periocular aesthetics",
+  "droopy-brows": "Eye & brow enhancement",
+  "ear-lobe-repair": "Ear reconstruction",
+  "excessive-sweating": "Medical dermatology",
+  "eye-socket-orbit-treatments": "Oculoplastic surgery",
+  "face-reshaping-contouring": "Facial contouring",
+  "hollowness-under-eyes": "Periocular aesthetics",
+  "infections-injuries-fractures": "Oculoplastic surgery",
+  "in-turning-out-turning-lids": "Functional eyelid surgery",
+  "paralysis-face-eyelid": "Oculoplastic surgery",
+  "pigmentation-texture-repair": "Skin rejuvenation",
+  "puffy-baggy-eyes": "Periocular aesthetics",
+  "skin-brightening": "Skin rejuvenation",
+  "skin-hydration": "Skin wellness",
+  "sleepy-droopy-eyelid": "Functional eyelid surgery",
+  "spasms-twitching": "Neuromodulator care",
+  "tear-passage-treatments": "Lacrimal & tearing",
+  "thyroid-eye-disease": "Oculoplastic surgery",
+  "watering-itching-lumps-bumps": "Eyelid lesions & comfort",
+  "wrinkles-fine-lines-folds": "Facial volume & lines",
+  "bye-bye-dark-circles": "Signature FACES",
+  "correction-of-treatments-gone-wrong": "Revision & correction",
+  "no-more-baggy-eyes": "Signature FACES",
+  "non-surgical-blepharoplasty-plexr": "Plexr plasma",
+  "plasma-facial-plexr": "Plexr plasma",
+  "scar-treatment-plexr": "Plexr plasma",
+  "warts-moles-stye-and-chalazion-plexr": "Plexr plasma",
+  "wrinkles-and-fine-lines-plexr": "Plexr plasma",
+  "xanthelasma-plexr": "Plexr plasma",
+};
+
+export function getTreatmentCardCategory(slug: string): string {
+  return TREATMENT_CARD_CATEGORY_BY_SLUG[slug] ?? "Aesthetic & medical care";
+}

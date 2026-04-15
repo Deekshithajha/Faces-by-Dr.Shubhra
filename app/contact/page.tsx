@@ -5,7 +5,7 @@ import { ClinicLocationSection, ConsultationForm, HeroSection } from "@/sections
 
 const contactTitle = "Contact | Dr. Shubhra Goel – Oculoplasty Surgeon";
 const contactDescription =
-  "Book a consultation with Dr. Shubhra Goel – Oculoplasty Surgeon at Faces, Hyderabad.";
+  "Book a consultation with Dr. Shubhra Goel – Oculoplasty Surgeon at FACES, Hyderabad.";
 
 export const metadata: Metadata = {
   title: contactTitle,

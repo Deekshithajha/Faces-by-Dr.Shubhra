@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Container } from "@/components/Container";
+import { UNIQUE_CLINICA_FAI_TREATMENTS_HEADING } from "@/data/treatmentSections";
 
 type NavLink = {
   href: string;
@@ -22,8 +23,8 @@ const leftNavLinks: NavLink[] = [
     href: "/service",
     label: "What we do",
     children: [
-      { href: "/service#normal-services-grid", label: "Our Treatment" },
-      { href: "/service#plexer-pro-grid", label: "Plexer Pro" },
+      { href: "/service#explore-all-treatments-grid", label: "Explore All Our Treatments" },
+      { href: "/service#unique-clinica-fai-treatments-grid", label: UNIQUE_CLINICA_FAI_TREATMENTS_HEADING },
     ],
   },
 ];
@@ -99,9 +100,9 @@ export function Navbar() {
               href="/"
               className="flex flex-col items-center leading-none text-primary transition-colors hover:text-primary-hover"
             >
-              <span className="font-serif text-[1.75rem] tracking-[0.14em] lg:text-3xl">FACES</span>
+              <span className="font-serif text-[1.75rem] uppercase tracking-[0.14em] lg:text-3xl">FACES</span>
               <span className="mt-1 text-[0.56rem] tracking-wide text-secondary">
-                Oculoplasty Surgeon
+                by Dr. Shubhra Goel
               </span>
             </Link>
           </div>
@@ -147,9 +148,9 @@ export function Navbar() {
         <div className="md:hidden">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex flex-col items-center leading-none text-primary">
-              <span className="font-serif text-xl tracking-[0.12em]">FACES</span>
+              <span className="font-serif text-xl uppercase tracking-[0.12em]">FACES</span>
               <span className="mt-1 text-[0.5rem] tracking-wide text-secondary">
-                Oculoplasty Surgeon
+                by Dr. Shubhra Goel
               </span>
             </Link>
             <button

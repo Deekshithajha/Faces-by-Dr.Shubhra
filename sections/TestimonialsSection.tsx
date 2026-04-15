@@ -13,7 +13,7 @@ export function TestimonialsSection({ items }: TestimonialsSectionProps) {
       <Container>
         <div className="mb-12">
           <SectionHeading
-            label="Testimonials"
+            label="What Our Clients Say"
             title="Experiences that inspire trust"
             description="Personal stories from patients who chose a calm, medically rigorous, and deeply personalized treatment journey."
           />

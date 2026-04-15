@@ -3,7 +3,7 @@ import type { ClinicLocation } from "@/types";
 export const clinicLocations: ClinicLocation[] = [
   {
     id: "loc1",
-    name: "Faces - Main Clinic",
+    name: "FACES - Main Clinic",
     address: "Banjara Hills, Road No. 12",
     city: "Hyderabad",
     phone: "+91 62811 17454",
@@ -11,7 +11,7 @@ export const clinicLocations: ClinicLocation[] = [
   },
   {
     id: "loc2",
-    name: "Faces - Jubilee Hills",
+    name: "FACES - Jubilee Hills",
     address: "Jubilee Hills Check Post",
     city: "Hyderabad",
     phone: "+91 62811 17454",

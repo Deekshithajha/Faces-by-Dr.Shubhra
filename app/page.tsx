@@ -7,6 +7,7 @@ import {
   ServicesGridSection,
   StarTreatmentsSection,
   TestimonialsSection,
+  WhyChooseUsSection,
   YouTubeTestimonialsSection,
 } from "@/sections";
 
@@ -19,10 +20,10 @@ export default async function Home() {
   return (
     <>
       <HeroSection
-        title="Faces brings advanced skin and eye-area care with an editorial calm"
-        subtitle="Dr. Shubhra Goel – Oculoplasty Surgeon. Experience evidence-based dermatology, regenerative aesthetics, and expert periocular treatments in a warm, premium clinical environment."
+        title="FACES brings advanced skin and eye-area care with an editorial calm"
+        subtitle="Dr. Shubhra Goel – Oculoplasty Surgeon. Evidence-led skin and periocular care, delivered with editorial calm and specialist judgment in Hyderabad."
         primaryCta={{ href: "/contact", label: "Book Consultation" }}
-        secondaryCta={{ href: "/surgeries", label: "Explore Treatments" }}
+        secondaryCta={{ href: "/service#explore-all-treatments-grid", label: "Explore Treatments" }}
         imageSrc="https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/dr-image/Image%2017-03-26%20at%2012.19%20PM.jpeg"
         imageAlt="Dr. Shubhra Goel – Oculoplasty Surgeon portrait"
         imageFit="contain"
@@ -37,6 +38,7 @@ export default async function Home() {
       <ServicesGridSection treatments={treatments} />
       <TestimonialsSection items={testimonials} />
       <YouTubeTestimonialsSection />
+      <WhyChooseUsSection />
       <ConsultationForm />
     </>
   );

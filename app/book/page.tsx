@@ -6,8 +6,8 @@ export default function BookPage() {
       <HeroSection
         title="Book your private appointment"
         subtitle="Share a few details and our care team will contact you to schedule a personalized consultation at your preferred time."
-        imageSrc="https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/dr-image/A%20detailed%20consultation%20is%20needed%20to%20understand%20the%20lifestyle,%20nutrition,%20work%20patterns,%20and%20ass.jpg"
-        imageAlt="Patient consultation booking at Faces"
+        imageSrc="https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/dr-image/Screenshot%202026-04-15%20at%207.19.07%20PM.png"
+        imageAlt="Patient consultation booking at FACES"
         imageStyle="seamless"
         imagePosition="left"
         entryAnimation="glide"

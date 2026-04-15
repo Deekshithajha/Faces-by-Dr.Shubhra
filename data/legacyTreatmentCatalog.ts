@@ -1,3 +1,5 @@
+export type TreatmentCatalogSection = "explore" | "unique";
+
 export interface LegacyTreatmentCatalogItem {
   slug: string;
   name: string;
@@ -5,7 +7,7 @@ export interface LegacyTreatmentCatalogItem {
   imageUrl: string;
   duration: string;
   recovery: string;
-  category: string;
+  catalogSection: TreatmentCatalogSection;
 }
 
 export const legacyTreatmentCatalog: LegacyTreatmentCatalogItem[] = [
@@ -13,297 +15,396 @@ export const legacyTreatmentCatalog: LegacyTreatmentCatalogItem[] = [
     slug: "absent-scanty-brows-lashes",
     name: "Absent / Scanty Brows and Lashes",
     description:
-      "Advanced techniques for eyebrow and eyelash restoration using hair transplantation, medical treatments, and aesthetic enhancement procedures.",
+      "Assessment-led restoration for sparse brows and lashes, with options chosen for your anatomy, goals, and long-term natural appearance.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//IMG-20250626-WA0005.jpg",
-    duration: "1-2 hours",
-    recovery: "1-2 weeks",
-    category: "Aesthetic Enhancement",
+    duration: "1–2 hours",
+    recovery: "1–2 weeks",
+    catalogSection: "explore",
   },
   {
     slug: "acne",
     name: "Acne",
     description:
-      "Comprehensive acne treatment using medical-grade therapies, chemical peels, laser treatments, and hormonal management for all acne types.",
+      "Structured care for active acne and related skin changes, combining medical management with in-clinic sessions aligned to your skin type.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/beforeandafter//acne%20before.png",
-    duration: "30-60 minutes",
-    recovery: "3-7 days",
-    category: "Medical Dermatology",
+    duration: "30–60 minutes",
+    recovery: "3–7 days",
+    catalogSection: "explore",
   },
   {
     slug: "anti-ageing-skin-care",
     name: "Anti-Ageing Skin Care",
     description:
-      "Evidence-based anti-aging protocols combining retinoids, antioxidants, peptides, and advanced skincare technologies for youthful skin.",
+      "Long-term programmes focused on firmness, texture, and clarity, with staged in-clinic care and home routines kept realistic for your lifestyle.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//antiaging.jpg",
     duration: "45 minutes",
     recovery: "None",
-    category: "Preventive Care",
+    catalogSection: "explore",
   },
   {
     slug: "anti-cellulite-treatment",
     name: "Anti-Cellulite Treatment",
     description:
-      "Multi-modal cellulite reduction using radiofrequency, massage therapy, topical treatments, and lifestyle modifications.",
+      "Focused protocols to improve the look and feel of cellulite-prone areas, with expectations and maintenance discussed clearly up front.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//Cellulite.jpg",
-    duration: "60-90 minutes",
-    recovery: "24-48 hours",
-    category: "Body Contouring",
+    duration: "60–90 minutes",
+    recovery: "24–48 hours",
+    catalogSection: "explore",
   },
   {
     slug: "cheek-hollowness-smile-folds",
     name: "Cheek Hollowness and Smile Folds",
     description:
-      "Dermal filler injections and volumizing treatments to restore facial volume and reduce nasolabial folds for a youthful appearance.",
+      "Mid-face support and smile-line softening planned with anatomy-first judgment, prioritising balance and natural movement.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//cheek%20hollowness.png",
-    duration: "30-45 minutes",
-    recovery: "2-3 days",
-    category: "Facial Rejuvenation",
+    duration: "30–45 minutes",
+    recovery: "2–3 days",
+    catalogSection: "explore",
   },
   {
     slug: "chemical-peels",
     name: "Chemical Peels",
     description:
-      "Professional-grade chemical peels ranging from superficial to deep for skin rejuvenation, pigmentation correction, and texture improvement.",
+      "Medical-grade peels selected for your concern and tolerance, used as part of a staged plan for clarity, texture, and even tone.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//IMG-20250626-WA0012.jpg",
-    duration: "30-60 minutes",
-    recovery: "3-14 days",
-    category: "Skin Resurfacing",
+    duration: "30–60 minutes",
+    recovery: "3–14 days",
+    catalogSection: "explore",
   },
   {
     slug: "daily-skin-care-program",
     name: "Daily Skin Care Program",
     description:
-      "Personalized medical-grade skincare regimens designed to maintain healthy skin, prevent aging, and address specific skin concerns.",
+      "Doctor-guided routines that pair active ingredients with barrier care, designed to support results from your in-clinic plan.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//daily%20skin%20care.png",
     duration: "Consultation: 30 min",
     recovery: "None",
-    category: "Preventive Care",
+    catalogSection: "explore",
   },
   {
     slug: "dark-circles",
     name: "Dark Circles",
     description:
-      "Comprehensive treatment for under-eye darkness using fillers, laser therapy, chemical peels, and topical treatments.",
+      "Cause-based pathways for under-eye darkness—pigment, shadow, volume, and skin quality—planned without a one-size template.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//dark%20circle.png",
-    duration: "30-60 minutes",
-    recovery: "3-7 days",
-    category: "Eye Care",
+    duration: "30–60 minutes",
+    recovery: "3–7 days",
+    catalogSection: "explore",
   },
   {
     slug: "droopy-brows",
-    name: "Droopy Brows",
+    name: "Droopy brows",
     description:
-      "Surgical and non-surgical brow lift procedures to elevate sagging eyebrows and create a more youthful, alert appearance.",
+      "Options for brow heaviness and upper-face tiredness, chosen after assessment of position, muscle activity, and skin quality.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//Droopy%20brows.png",
-    duration: "1-2 hours",
-    recovery: "1-2 weeks",
-    category: "Oculoplastic Surgery",
+    duration: "1–2 hours",
+    recovery: "1–2 weeks",
+    catalogSection: "explore",
   },
   {
     slug: "ear-lobe-repair",
     name: "Ear Lobe Repair",
     description:
-      "Surgical reconstruction of torn, stretched, or damaged earlobes with precise suturing techniques for natural-looking results.",
+      "Precise reconstruction for stretched or split earlobes, with symmetry, contour, and safe re-piercing guidance when appropriate.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//ear%20repair.png",
-    duration: "30-60 minutes",
-    recovery: "1-2 weeks",
-    category: "Reconstructive Surgery",
+    duration: "30–60 minutes",
+    recovery: "1–2 weeks",
+    catalogSection: "explore",
   },
   {
     slug: "excessive-sweating",
     name: "Excessive Sweating",
     description:
-      "Hyperhidrosis treatment using Botox injections, topical antiperspirants, and surgical options for severe cases.",
+      "Clinical hyperhidrosis care with options matched to severity and site, emphasising reliable symptom control and discretion.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//IMG-20250626-WA0007.jpg",
-    duration: "30-45 minutes",
-    recovery: "24-48 hours",
-    category: "Medical Treatment",
+    duration: "30–45 minutes",
+    recovery: "24–48 hours",
+    catalogSection: "explore",
   },
   {
     slug: "eye-socket-orbit-treatments",
     name: "Eye Socket / Orbit Treatments",
     description:
-      "Specialized orbital surgery for thyroid eye disease, orbital fractures, tumors, and socket reconstruction procedures.",
+      "Specialist evaluation and planning for socket- and orbit-related concerns, with functional safety and appearance considered together.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//Eye%20Socket%20%20Orbit%20Treatments.png",
-    duration: "2-4 hours",
-    recovery: "2-6 weeks",
-    category: "Orbital Surgery",
+    duration: "2–4 hours",
+    recovery: "2–6 weeks",
+    catalogSection: "explore",
   },
   {
     slug: "face-reshaping-contouring",
-    name: "Face Reshaping and Contouring",
+    name: "Face reshaping and contouring",
     description:
-      "Advanced facial contouring using dermal fillers, fat grafting, and surgical techniques to enhance facial structure and symmetry.",
+      "Contour refinement grounded in bone and soft-tissue structure, aimed at harmony and proportion rather than trend-led change.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//IMG-20250626-WA0010.jpg",
-    duration: "1-3 hours",
-    recovery: "1-3 weeks",
-    category: "Facial Enhancement",
+    duration: "1–3 hours",
+    recovery: "1–3 weeks",
+    catalogSection: "explore",
   },
   {
     slug: "hollowness-under-eyes",
-    name: "Hollowness Under Eyes",
+    name: "Hollowness under Eyes",
     description:
-      "Treatment of tear trough deformity using hyaluronic acid fillers, fat grafting, and surgical correction for a refreshed appearance.",
+      "Tear-trough and under-eye volume support after careful tissue assessment, focused on natural light reflection and expression.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//Hollowness%20under%20Eyes.png",
-    duration: "30-60 minutes",
-    recovery: "3-7 days",
-    category: "Eye Rejuvenation",
+    duration: "30–60 minutes",
+    recovery: "3–7 days",
+    catalogSection: "explore",
   },
   {
     slug: "infections-injuries-fractures",
-    name: "Infections, Injuries, Fractures",
+    name: "Infections, injuries, fractures",
     description:
-      "Emergency and reconstructive treatment of facial trauma, infections, and fractures with advanced surgical techniques.",
+      "Structured care for periocular trauma and infection-related concerns, prioritising function first and then refinement where needed.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//IMG-20250626-WA0008.jpg",
-    duration: "1-4 hours",
-    recovery: "2-8 weeks",
-    category: "Trauma Surgery",
+    duration: "1–4 hours",
+    recovery: "2–8 weeks",
+    catalogSection: "explore",
   },
   {
     slug: "in-turning-out-turning-lids",
     name: "In-turning and Out-turning of Lids",
     description:
-      "Surgical correction of entropion and ectropion to restore normal eyelid position and protect the eye surface.",
+      "Functional eyelid repositioning to improve comfort, surface protection, and a natural lid margin appearance.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//In-turning%20and%20Out-turning%20of%20Lids.png",
-    duration: "1-2 hours",
-    recovery: "2-3 weeks",
-    category: "Eyelid Surgery",
+    duration: "1–2 hours",
+    recovery: "2–3 weeks",
+    catalogSection: "explore",
   },
   {
     slug: "paralysis-face-eyelid",
     name: "Paralysis of Face and Eyelid",
     description:
-      "Treatment of facial palsy using nerve grafts, muscle transfers, Botox, and rehabilitative procedures to restore function.",
+      "Supportive and reconstructive options for facial and eyelid movement impairment, with eye protection and symmetry as core goals.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//IMG-20250626-WA0009.jpg",
-    duration: "2-6 hours",
-    recovery: "4-12 weeks",
-    category: "Reconstructive Surgery",
+    duration: "2–6 hours",
+    recovery: "4–12 weeks",
+    catalogSection: "explore",
   },
   {
     slug: "pigmentation-texture-repair",
     name: "Pigmentation And Texture Repair",
     description:
-      "Advanced treatments for melasma, age spots, and skin texture using lasers, chemical peels, and medical-grade skincare.",
+      "Corrective pathways for uneven tone and texture, staged for safety with clear expectations on pace and maintenance.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//pigmentation.png",
-    duration: "30-90 minutes",
-    recovery: "3-14 days",
-    category: "Skin Correction",
+    duration: "30–90 minutes",
+    recovery: "3–14 days",
+    catalogSection: "explore",
   },
   {
     slug: "puffy-baggy-eyes",
     name: "Puffy / Baggy Eyes",
     description:
-      "Surgical and non-surgical treatment of under-eye bags using blepharoplasty, radiofrequency, and advanced techniques.",
+      "Eye-area heaviness addressed with a plan matched to skin laxity, fat prominence, and your daily comfort.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/beforeandafter//eye%20bag%20before%20.png",
-    duration: "1-2 hours",
-    recovery: "1-2 weeks",
-    category: "Eye Surgery",
+    duration: "1–2 hours",
+    recovery: "1–2 weeks",
+    catalogSection: "explore",
   },
   {
     slug: "skin-brightening",
     name: "Skin Brightening",
     description:
-      "Professional skin brightening treatments using vitamin C, kojic acid, arbutin, and laser therapy for radiant complexion.",
+      "Radiance-focused care that respects your skin type, with measured steps to improve clarity without harsh shortcuts.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//IMG-20250626-WA0011.jpg",
-    duration: "45-60 minutes",
-    recovery: "3-7 days",
-    category: "Skin Enhancement",
+    duration: "45–60 minutes",
+    recovery: "3–7 days",
+    catalogSection: "explore",
   },
   {
     slug: "skin-hydration",
     name: "Skin Hydration",
     description:
-      "Deep hydration treatments using hyaluronic acid, moisturizing facials, and medical-grade hydrating products.",
+      "Barrier-first hydration strategies for dry, dull, or uncomfortable skin, pairing in-clinic replenishment with sensible home care.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//skin%20hydration.jpg",
     duration: "60 minutes",
     recovery: "None",
-    category: "Skin Care",
+    catalogSection: "explore",
   },
   {
     slug: "sleepy-droopy-eyelid",
-    name: "Sleepy or Droopy Eyelid",
+    name: "Sleepy or Droopy Eyelid (Ptosis Surgery)",
     description:
-      "Ptosis correction surgery to lift drooping eyelids and improve vision and appearance using advanced surgical techniques.",
+      "Ptosis-focused assessment and correction to improve lid height, visual comfort, and a natural awake expression.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/beforeandafter//ptosis%20before.png",
-    duration: "1-2 hours",
-    recovery: "2-3 weeks",
-    category: "Ptosis Surgery",
+    duration: "1–2 hours",
+    recovery: "2–3 weeks",
+    catalogSection: "explore",
   },
   {
     slug: "spasms-twitching",
     name: "Spasms and Twitching",
     description:
-      "Treatment of blepharospasm and facial spasms using Botox injections and neurological management protocols.",
+      "Diagnosis-led relief for eyelid and facial spasms, with follow-up tuned to symptom control and quality of life.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//IMG-20250626-WA0004.jpg",
-    duration: "20-30 minutes",
-    recovery: "24-48 hours",
-    category: "Neurological Treatment",
+    duration: "20–30 minutes",
+    recovery: "24–48 hours",
+    catalogSection: "explore",
   },
   {
     slug: "tear-passage-treatments",
     name: "Tear Passage Treatments",
     description:
-      "Surgical treatment of blocked tear ducts using dacryocystorhinostomy and endoscopic techniques for tear drainage.",
+      "Care for blocked or troublesome tear drainage that contributes to watering, irritation, or recurrent surface issues.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//Tear%20passage%20treatment.png",
-    duration: "1-2 hours",
-    recovery: "2-4 weeks",
-    category: "Lacrimal Surgery",
+    duration: "1–2 hours",
+    recovery: "2–4 weeks",
+    catalogSection: "explore",
   },
   {
     slug: "thyroid-eye-disease",
     name: "Thyroid Eye Disease",
     description:
-      "Comprehensive management of thyroid-related eye changes including orbital decompression and eyelid correction.",
+      "Stabilisation-minded planning for thyroid-related eye changes, with interventions timed to activity, comfort, and protection.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/beforeandafter//thyroid%20eye%20disease%20before.png",
-    duration: "2-4 hours",
-    recovery: "4-8 weeks",
-    category: "Orbital Disease",
+    duration: "2–4 hours",
+    recovery: "4–8 weeks",
+    catalogSection: "explore",
   },
   {
     slug: "watering-itching-lumps-bumps",
     name: "Watering, Itching, Lumps, Bumps",
     description:
-      "Treatment of various eyelid conditions including cysts, styes, and inflammatory conditions with medical and surgical approaches.",
+      "Focused assessment of eyelid and periocular irritation and lesions, with treatment aligned to the confirmed diagnosis.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//Watering,%20Itching,%20Lumps,%20Bumps.png",
-    duration: "15-60 minutes",
-    recovery: "3-14 days",
-    category: "Eyelid Conditions",
+    duration: "15–60 minutes",
+    recovery: "3–14 days",
+    catalogSection: "explore",
   },
   {
     slug: "wrinkles-fine-lines-folds",
     name: "Wrinkles, Fine Lines, Folds",
     description:
-      "Comprehensive anti-aging treatment using Botox, fillers, laser resurfacing, and advanced skincare for smooth skin.",
+      "Line-softening plans that preserve expression, combining surface quality work with judicious support where appropriate.",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//IMG-20250626-WA0006.jpg",
-    duration: "30-90 minutes",
-    recovery: "3-14 days",
-    category: "Anti-Aging",
+    duration: "30–90 minutes",
+    recovery: "3–14 days",
+    catalogSection: "explore",
+  },
+  {
+    slug: "bye-bye-dark-circles",
+    name: "Bye Bye Dark Circles©️",
+    description:
+      "A proprietary, multi-step FACES protocol for under-eye darkness, personalised to pigment, structure, and lifestyle factors.",
+    imageUrl:
+      "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/our-star-treatments//Bye-Bye-1-ppnt7m40795wyhpnhtvfgmq6wt700fe2hw9kyys6ys.png",
+    duration: "45–90 minutes",
+    recovery: "3–10 days",
+    catalogSection: "unique",
+  },
+  {
+    slug: "correction-of-treatments-gone-wrong",
+    name: "Correction Of Treatments Gone Wrong",
+    description:
+      "Specialist corrective planning after unsatisfactory prior work, with candid feasibility, staged recovery, and realistic goals.",
+    imageUrl:
+      "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/our-star-treatments//Correction-Of-Treatments-1-ppnt9b7ijhhjx58wl2a6gpb5iutuwr4meao55y9lqc.png",
+    duration: "Varies",
+    recovery: "Discussed in consultation",
+    catalogSection: "unique",
+  },
+  {
+    slug: "no-more-baggy-eyes",
+    name: "No More Baggy Eyes©️",
+    description:
+      "A signature FACES pathway for baggy or puffy eyelids, emphasising natural crease architecture and rested expression.",
+    imageUrl:
+      "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/our-star-treatments//Baggy-puffy-pppgtkl95oth1il7lxjohltu6e1i7rozvefp5uy7gk.png",
+    duration: "60–120 minutes",
+    recovery: "7–14 days",
+    catalogSection: "unique",
+  },
+  {
+    slug: "non-surgical-blepharoplasty-plexr",
+    name: "Non-Surgical Blepharoplasty (Plexr)",
+    description:
+      "Plasma-led upper and lower lid tightening for selected patients seeking rejuvenation with a non-incision-first approach.",
+    imageUrl:
+      "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//IMG-20250626-WA0012.jpg",
+    duration: "45–90 minutes",
+    recovery: "5–10 days",
+    catalogSection: "unique",
+  },
+  {
+    slug: "plasma-facial-plexr",
+    name: "Plasma Facial (Plexr)",
+    description:
+      "Controlled plasma resurfacing and tightening for skin quality and periocular refresh, with intensity matched to your downtime window.",
+    imageUrl:
+      "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//IMG-20250626-WA0011.jpg",
+    duration: "45–75 minutes",
+    recovery: "5–10 days",
+    catalogSection: "unique",
+  },
+  {
+    slug: "scar-treatment-plexr",
+    name: "Scar Treatment (Plexr)",
+    description:
+      "Plexr-assisted scar refinement where tissue quality and scar type suit a plasma micro-injury strategy.",
+    imageUrl:
+      "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//IMG-20250626-WA0006.jpg",
+    duration: "30–60 minutes",
+    recovery: "5–10 days",
+    catalogSection: "unique",
+  },
+  {
+    slug: "warts-moles-stye-and-chalazion-plexr",
+    name: "Warts, Moles, Stye And Chalazion (Plexr)",
+    description:
+      "Precision Plexr planning for selected benign periocular lesions and chalazion-type concerns after clinical confirmation.",
+    imageUrl:
+      "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//Watering,%20Itching,%20Lumps,%20Bumps.png",
+    duration: "20–45 minutes",
+    recovery: "3–10 days",
+    catalogSection: "unique",
+  },
+  {
+    slug: "wrinkles-and-fine-lines-plexr",
+    name: "Wrinkles And Fine Lines (Plexr)",
+    description:
+      "Targeted Plexr tightening for fine lines where collagen support has thinned, with periorbital and facial zones selected carefully.",
+    imageUrl:
+      "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//antiaging.jpg",
+    duration: "45–75 minutes",
+    recovery: "5–10 days",
+    catalogSection: "unique",
+  },
+  {
+    slug: "xanthelasma-plexr",
+    name: "Xanthelasma (Plexr)",
+    description:
+      "Measured Plexr treatment planning for periocular xanthelasma, with emphasis on margin control and healing predictability.",
+    imageUrl:
+      "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/ourservices//dark%20circle.png",
+    duration: "30–60 minutes",
+    recovery: "5–10 days",
+    catalogSection: "unique",
   },
 ];

@@ -1,0 +1,72 @@
+/* Guaranteed FAB layout — not dependent on Tailwind JIT for critical visibility */
+
+.shell {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: max(1.25rem, env(safe-area-inset-right, 0px));
+  padding-bottom: max(6rem, calc(env(safe-area-inset-bottom, 0px) + 4.5rem));
+}
+
+@media (min-width: 768px) {
+  .shell {
+    padding-right: max(1.5rem, env(safe-area-inset-right, 0px));
+    padding-bottom: max(7rem, calc(env(safe-area-inset-bottom, 0px) + 5.25rem));
+  }
+}
+
+.link {
+  pointer-events: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 9999px;
+  background-color: #25d366;
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(37, 211, 102, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  transition:
+    transform 300ms ease-out,
+    box-shadow 300ms ease-out;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.link:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 14px 36px rgba(37, 211, 102, 0.36);
+}
+
+.link:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.55);
+  outline-offset: 3px;
+}
+
+@media (min-width: 768px) {
+  .link {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .icon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}

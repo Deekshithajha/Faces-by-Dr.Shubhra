@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
+import { UNIQUE_CLINICA_FAI_TREATMENTS_HEADING } from "@/data/treatmentSections";
 import { starTreatments } from "@/data/starTreatments";
 
 export function StarTreatmentsSection() {
@@ -10,9 +11,9 @@ export function StarTreatmentsSection() {
     <section className="py-20 md:py-24 lg:py-28">
       <Container>
         <SectionHeading
-          label="Our Star Treatments"
-          title="Signature proprietary treatments for eye and face concerns"
-          description="These focused protocols are among the most requested Faces interventions and reflect Dr. Shubhra Goel's specialized treatment approach."
+          label={UNIQUE_CLINICA_FAI_TREATMENTS_HEADING}
+          title="Featured signature protocols"
+          description="Focused FACES pathways that patients most often request—each aligned to the Unique FACES Treatments portfolio."
           align="center"
         />
 
