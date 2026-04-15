@@ -21,10 +21,10 @@ export const procedureCategories: ProcedureCategory[] = [
   },
   {
     id: "breast",
-    name: "Oculofacial Aesthetics",
+    name: "Oculoplasty & periocular aesthetics",
     description:
       "Specialized eye-area and facial feature refinement balancing function, comfort, and aesthetic harmony.",
-    heroTitle: "Precision Oculofacial Treatments",
+    heroTitle: "Precision oculoplasty & periocular treatments",
     heroSubtitle:
       "Thoughtful treatments for eyelid, under-eye, and facial harmony concerns.",
   },

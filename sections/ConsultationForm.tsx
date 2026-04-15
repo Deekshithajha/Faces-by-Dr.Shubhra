@@ -110,7 +110,7 @@ export function ConsultationForm() {
               >
                 <option>Facial Dermatology</option>
                 <option>Body and Hair Care</option>
-                <option>Oculofacial Aesthetics</option>
+                <option>Oculoplasty & periocular aesthetics</option>
               </select>
             </FormInput>
             <FormInput label="Message" className="md:col-span-2">

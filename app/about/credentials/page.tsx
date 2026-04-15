@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Container } from "@/components";
@@ -55,7 +56,7 @@ const education: CredentialItem[] = [
   {
     stage: "Advanced Training",
     institution: "Dr. Cynthia Boxrud, Los Angeles",
-    distinction: "Celebrity Oculoplastic Surgery",
+    distinction: "Advanced Oculoplasty Surgery Training",
     imageUrl:
       "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/education//Black-Elegant-Modern-Name-Initials-Monogram-Logo.png",
   },
@@ -112,12 +113,30 @@ const impactStats = [
   { value: "50+", label: "Research Publications" },
 ];
 
+const credentialsPageTitle = "Dr. Shubhra Goel – Oculoplasty Surgeon | Credentials";
+const credentialsPageDescription =
+  "Dr. Shubhra Goel – Oculoplasty Surgeon: academic depth, global training, and sustained clinical leadership.";
+
+export const metadata: Metadata = {
+  title: credentialsPageTitle,
+  description: credentialsPageDescription,
+  openGraph: {
+    title: credentialsPageTitle,
+    description: credentialsPageDescription,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: credentialsPageTitle,
+    description: credentialsPageDescription,
+  },
+};
+
 export default function CredentialsPage() {
   return (
     <>
       <HeroSection
         title="Dr. Shubhra Goel Credentials"
-        subtitle="Academic depth, global training, and sustained clinical leadership across oculofacial aesthetics and advanced skin care."
+        subtitle="Dr. Shubhra Goel – Oculoplasty Surgeon: academic depth, global training, and sustained clinical leadership across oculoplasty and advanced skin care."
         primaryCta={{ href: "/contact", label: "Book a Consultation" }}
       />
 
@@ -129,7 +148,7 @@ export default function CredentialsPage() {
               Amongst Top 10 Women Surgeons in India
             </h2>
             <p className="mt-5 max-w-4xl leading-8 text-text-secondary">
-              Featured by Women Entrepreneur Magazine for pioneering patient-first oculofacial
+              Featured by Women Entrepreneur Magazine for pioneering patient-first oculoplasty
               treatment pathways and balancing non-invasive and surgical options for realistic
               outcomes.
             </p>

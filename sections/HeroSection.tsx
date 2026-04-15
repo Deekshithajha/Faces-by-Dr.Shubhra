@@ -21,7 +21,7 @@ export function HeroSection({
   primaryCta,
   secondaryCta,
   imageSrc = "https://jnksxvamrbsxfahkbxgi.supabase.co/storage/v1/object/public/dr-image/Screenshot%202025-07-21%20155603.png",
-  imageAlt = "Dr. Shubhra Goel",
+  imageAlt = "Dr. Shubhra Goel – Oculoplasty Surgeon",
   imageFit = "cover",
   imageStyle = "panel",
   imagePosition = "right",
@@ -50,7 +50,7 @@ export function HeroSection({
       <Container className="grid gap-12 py-20 md:grid-cols-[1.05fr_0.95fr] md:py-24 lg:py-28">
         <div className={`${textAnimationClass} flex flex-col gap-7 lg:gap-8 ${isImageLeft ? "order-2" : "order-1"}`}>
           <p className="section-label text-xs uppercase text-secondary">
-            Advanced Dermatology and Oculofacial Care
+            Dr. Shubhra Goel – Oculoplasty Surgeon
           </p>
           <h1 className="max-w-3xl font-serif text-5xl leading-[1.05] text-primary md:text-6xl lg:text-[4.5rem]">
             {title}

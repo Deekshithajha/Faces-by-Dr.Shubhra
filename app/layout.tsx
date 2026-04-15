@@ -19,10 +19,25 @@ const cormorant = Cormorant_Garamond({
   weight: ["400", "500", "600", "700"],
 });
 
+const siteTitle = "Faces | Dr. Shubhra Goel – Oculoplasty Surgeon";
+const siteDescription =
+  "Dr. Shubhra Goel – Oculoplasty Surgeon. Advanced dermatology and premium eye-area care in Hyderabad.";
+
 export const metadata: Metadata = {
-  title: "Faces | Premium Dermatology and Oculofacial Care",
-  description:
-    "Faces combines advanced dermatology and oculofacial expertise with a calm, premium patient experience.",
+  title: siteTitle,
+  description: siteDescription,
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    siteName: "Faces",
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+  },
 };
 
 export default function RootLayout({

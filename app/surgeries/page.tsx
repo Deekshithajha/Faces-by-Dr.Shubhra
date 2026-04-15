@@ -9,7 +9,7 @@ export default async function SurgeriesPage() {
   return (
     <>
       <HeroSection
-        title="Comprehensive dermatology and oculofacial treatment portfolio"
+        title="Comprehensive dermatology and oculoplasty-led treatment portfolio"
         subtitle="Explore medical, aesthetic, and eye-area treatment pathways designed for healthy skin and refined, natural-looking outcomes."
         primaryCta={{ href: "/contact", label: "Request Consultation" }}
       />

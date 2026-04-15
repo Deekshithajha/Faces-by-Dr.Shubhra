@@ -101,7 +101,7 @@ export function Navbar() {
             >
               <span className="font-serif text-[1.75rem] tracking-[0.14em] lg:text-3xl">FACES</span>
               <span className="mt-1 text-[0.56rem] tracking-wide text-secondary">
-                by Dr. Shubhra Goel
+                Oculoplasty Surgeon
               </span>
             </Link>
           </div>
@@ -149,7 +149,7 @@ export function Navbar() {
             <Link href="/" className="flex flex-col items-center leading-none text-primary">
               <span className="font-serif text-xl tracking-[0.12em]">FACES</span>
               <span className="mt-1 text-[0.5rem] tracking-wide text-secondary">
-                by Dr. Shubhra Goel
+                Oculoplasty Surgeon
               </span>
             </Link>
             <button

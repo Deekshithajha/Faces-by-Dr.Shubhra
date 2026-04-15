@@ -8,11 +8,11 @@ export function Footer() {
         <div className="space-y-3 md:col-span-2">
           <div>
             <p className="font-serif text-2xl tracking-[0.15em] text-primary">FACES</p>
-            <p className="text-xs tracking-[0.2em] text-secondary">by Dr.Shubhra Goel</p>
+            <p className="text-xs tracking-[0.2em] text-secondary">Oculoplasty Surgeon</p>
           </div>
           <p className="max-w-md leading-7">
-            Advanced dermatology and oculofacial care with a premium, patient-first
-            experience focused on safe, natural-looking results.
+            Dr. Shubhra Goel – Oculoplasty Surgeon. Advanced dermatology and premium eye-area
+            care with a patient-first experience focused on safe, natural-looking results.
           </p>
         </div>
         <div className="space-y-3">
@@ -60,7 +60,9 @@ export function Footer() {
         </div>
       </Container>
       <Container className="border-t border-border/70 py-5 text-xs tracking-wide text-text-secondary/80">
-        <p>Faces by Dr.Shubhra Goel - Premium dermatology and oculofacial care.</p>
+        <p>
+          Dr. Shubhra Goel – Oculoplasty Surgeon · Faces — premium dermatology and eye-area care.
+        </p>
       </Container>
     </footer>
   );

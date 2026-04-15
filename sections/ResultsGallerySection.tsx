@@ -28,7 +28,7 @@ export function ResultsGallerySection({ items, showViewAll = false }: ResultsGal
           ) : null}
         </div>
         <div className="mb-8 flex flex-wrap gap-3">
-          {["Facial", "Body", "Oculofacial"].map((filter) => (
+          {["Facial", "Body", "Periocular"].map((filter) => (
             <button
               key={filter}
               type="button"

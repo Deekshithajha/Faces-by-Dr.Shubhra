@@ -33,7 +33,7 @@ export function WhyChooseUsSection() {
           <SectionHeading
             label="Why Choose Us"
             title="Built on trust, precision, and calm care"
-            description="Our approach combines dermatology and oculofacial expertise with an understated luxury experience designed to keep patients informed, safe, and confident."
+            description="Our approach combines dermatology and oculoplasty-led expertise with an understated luxury experience designed to keep patients informed, safe, and confident."
           />
         </div>
         <div className="overflow-hidden">

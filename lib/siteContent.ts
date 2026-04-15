@@ -28,7 +28,7 @@ const fallbackTreatments: Treatment[] = [
   {
     id: "breast-default",
     slug: "breast-augmentation",
-    title: "Oculofacial Aesthetics",
+    title: "Oculoplasty & periocular aesthetics",
     shortDescription: procedureCategories[2].description,
     category: "breast",
     imageUrl: null,

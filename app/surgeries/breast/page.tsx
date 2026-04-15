@@ -9,14 +9,14 @@ export default function BreastSurgeriesPage() {
   return (
     <>
       <HeroSection
-        title={breastCategory?.heroTitle ?? "Oculofacial and Feature Refinement"}
+        title={breastCategory?.heroTitle ?? "Precision oculoplasty & periocular treatments"}
         subtitle={breastCategory?.heroSubtitle ?? "Tailored eye-area and facial harmony solutions"}
-        primaryCta={{ href: "/contact", label: "Book Oculofacial Consultation" }}
+        primaryCta={{ href: "/contact", label: "Book a consultation" }}
       />
 
       <section className="mx-auto w-full max-w-6xl px-6 py-20">
         <div className="mb-10">
-          <p className="section-label text-xs uppercase text-secondary">Oculofacial Treatments</p>
+          <p className="section-label text-xs uppercase text-secondary">Periocular & oculoplasty</p>
           <h2 className="mt-3 font-serif text-4xl text-primary md:text-5xl">
             Precision for expression, comfort, and elegance
           </h2>
@@ -29,10 +29,10 @@ export default function BreastSurgeriesPage() {
       </section>
 
       <CtaBanner
-        title="Receive a personalized oculofacial roadmap"
+        title="Receive a personalized treatment roadmap"
         description="Plan your treatment with a focus on functional comfort, natural expression, and lifestyle compatibility."
         ctaHref="/contact"
-        ctaLabel="Request Oculofacial Review"
+        ctaLabel="Request a clinical review"
       />
     </>
   );

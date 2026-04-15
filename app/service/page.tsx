@@ -10,7 +10,7 @@ const normalServiceHighlights = [
     href: "/service/our-treatment/acne",
   },
   {
-    title: "Oculofacial Expert Care",
+    title: "Oculoplasty expert care",
     description: "Specialized non-surgical and surgical planning for eyelid, orbit, and under-eye concerns.",
     href: "/service/our-treatment/hollowness-under-eyes",
   },
